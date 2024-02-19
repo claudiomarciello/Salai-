@@ -1,0 +1,27 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Select images" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona immagini"
+          }
+        }
+      }
+    },
+    "Select Images" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona immagini"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

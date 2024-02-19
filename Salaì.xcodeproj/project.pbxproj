@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6004E35E2B83A94C00BEB7CD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */; };
 		6051F0272B8396C2005DA335 /* Salai_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0262B8396C2005DA335 /* Salai_App.swift */; };
 		6051F0292B8396C2005DA335 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0282B8396C2005DA335 /* ContentView.swift */; };
 		6051F02B2B8396C5005DA335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6051F02A2B8396C5005DA335 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		6051F0232B8396C2005DA335 /* Salaì.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salaì.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6051F0262B8396C2005DA335 /* Salai_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salai_App.swift; sourceTree = "<group>"; };
 		6051F0282B8396C2005DA335 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		6051F01A2B8396C2005DA335 = {
 			isa = PBXGroup;
 			children = (
+				6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */,
 				6051F0252B8396C2005DA335 /* Salaì */,
 				6051F0372B8396C5005DA335 /* SalaìTests */,
 				6051F0412B8396C5005DA335 /* SalaìUITests */,
@@ -215,6 +218,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 6051F01A2B8396C2005DA335;
 			productRefGroup = 6051F0242B8396C2005DA335 /* Products */;
@@ -235,6 +239,7 @@
 			files = (
 				6051F02E2B8396C5005DA335 /* Preview Assets.xcassets in Resources */,
 				6051F02B2B8396C5005DA335 /* Assets.xcassets in Resources */,
+				6004E35E2B83A94C00BEB7CD /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,8 +442,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.claudiomarciello.Salai-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -464,8 +472,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.claudiomarciello.Salai-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
