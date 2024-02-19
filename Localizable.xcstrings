@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Ai Results" : {
+
+    },
+    "Picker" : {
+
+    },
     "Select images" : {
       "localizations" : {
         "it" : {
@@ -21,6 +27,9 @@
           }
         }
       }
+    },
+    "Your portfolio" : {
+
     }
   },
   "version" : "1.0"
