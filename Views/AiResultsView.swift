@@ -41,12 +41,16 @@ struct AiResultsView: View {
                             .resizable()
                             .foregroundStyle(.white)
                             .frame(width: 30, height: 30)
+                            .padding(.leading)
                         Text("Generate a new sketch")
+                            .font(.body)
+                            .fontWeight(.regular)
                             .foregroundStyle(.white)
+                            .padding()
                     }
                     .frame(width: 250)
                     .background(.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
                 }
                 
                 
