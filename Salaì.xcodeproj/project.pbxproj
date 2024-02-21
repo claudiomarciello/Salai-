@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6004E35E2B83A94C00BEB7CD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */; };
 		6004E37A2B83B84D00BEB7CD /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3792B83B84D00BEB7CD /* Portfolio.swift */; };
 		6004E37B2B83B84D00BEB7CD /* AiResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3782B83B84D00BEB7CD /* AiResults.swift */; };
 		6004E3842B83B99700BEB7CD /* AiResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3822B83B99700BEB7CD /* AiResultsViewModel.swift */; };
 		6004E3852B83B99700BEB7CD /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3832B83B99700BEB7CD /* PortfolioViewModel.swift */; };
 		6004E3892B83B99D00BEB7CD /* AiResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3882B83B99D00BEB7CD /* AiResultsView.swift */; };
 		6004E38A2B83B99D00BEB7CD /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3872B83B99D00BEB7CD /* PortfolioView.swift */; };
+		600D3FD32B861BD100B3A545 /* Localization.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 600D3FD22B861BD100B3A545 /* Localization.xcstrings */; };
 		6051F0272B8396C2005DA335 /* Salai_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0262B8396C2005DA335 /* Salai_App.swift */; };
 		6051F0292B8396C2005DA335 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0282B8396C2005DA335 /* ContentView.swift */; };
 		6051F02B2B8396C5005DA335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6051F02A2B8396C5005DA335 /* Assets.xcassets */; };
@@ -41,13 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		6004E3782B83B84D00BEB7CD /* AiResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResults.swift; sourceTree = "<group>"; };
 		6004E3792B83B84D00BEB7CD /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		6004E3822B83B99700BEB7CD /* AiResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResultsViewModel.swift; sourceTree = "<group>"; };
 		6004E3832B83B99700BEB7CD /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 		6004E3872B83B99D00BEB7CD /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		6004E3882B83B99D00BEB7CD /* AiResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResultsView.swift; sourceTree = "<group>"; };
+		600D3FD22B861BD100B3A545 /* Localization.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localization.xcstrings; sourceTree = "<group>"; };
 		6051F0232B8396C2005DA335 /* Salaì.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salaì.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6051F0262B8396C2005DA335 /* Salai_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salai_App.swift; sourceTree = "<group>"; };
 		6051F0282B8396C2005DA335 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		6051F01A2B8396C2005DA335 = {
 			isa = PBXGroup;
 			children = (
-				6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */,
+				600D3FD22B861BD100B3A545 /* Localization.xcstrings */,
 				6004E3812B83B99700BEB7CD /* ViewModel */,
 				6004E3862B83B99D00BEB7CD /* Views */,
 				6004E3772B83B84D00BEB7CD /* Models */,
@@ -281,7 +281,7 @@
 			files = (
 				6051F02E2B8396C5005DA335 /* Preview Assets.xcassets in Resources */,
 				6051F02B2B8396C5005DA335 /* Assets.xcassets in Resources */,
-				6004E35E2B83A94C00BEB7CD /* Localizable.xcstrings in Resources */,
+				600D3FD32B861BD100B3A545 /* Localization.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,57 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "AiResults" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AiResults"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risultati Ai"
+          }
+        }
+      }
+    },
+    "Select images" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select images"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona immagini"
+          }
+        }
+      }
+    },
+    "Upload here your illustrations for train your digital support" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload here your illustrations for train your digital support"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carica qui le tue illustrazioni per allenare il tuo assistente digitale"
+          }
+        }
+      }
+    }
+  },
   "version" : "1.0"
 }

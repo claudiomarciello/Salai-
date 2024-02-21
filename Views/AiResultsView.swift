@@ -19,36 +19,39 @@ struct AiResultsView: View {
     var viewModel = AiResultsViewModel()
     
     var body: some View {
-        VStack{
-            Text("Ai")
-                .font(.system(size: 96))
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.bottom, -20)
-            Text("results")
-                .font(.system(size: 96))
-                .fontWeight(.bold)
-                .padding(.top, -20)
-            Text("Upload here your illustrations for train your digital support")
-                .font(.headline)
-                .fontWeight(.thin)
-            Button(action: {print("button")}){
-                HStack{
-                    Image(systemName: "wand.and.stars")
-                        .resizable()
-                        .foregroundStyle(.white)
-                        .frame(width: 30, height: 30)
-                    Text("Generate a new sketch")
-                        .foregroundStyle(.white)
+        ZStack{
+            Rectangle().opacity(0.01).frame(width: 1000, height: 600)
+                .foregroundStyle(.gray)
+            VStack{
+                Text("Ai")
+                    .font(.system(size: 96))
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom, -20)
+                Text("results")
+                    .font(.system(size: 96))
+                    .fontWeight(.bold)
+                    .padding(.top, -20)
+                Text("Upload here your illustrations for train your digital support")
+                    .font(.title3)
+                // .fontWeight(.thin)
+                Button(action: {print("button")}){
+                    HStack{
+                        Image(systemName: "wand.and.stars")
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: 30, height: 30)
+                        Text("Generate a new sketch")
+                            .foregroundStyle(.white)
                     }
-                .frame(width: 250)
-                .background(.black)
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            }
-            
+                    .frame(width: 250)
+                    .background(.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                }
                 
-            
-        }
+                
+                
+            }}
             .gesture(DragGesture()
                 .onChanged {
                     print("dragging from aiResults")
