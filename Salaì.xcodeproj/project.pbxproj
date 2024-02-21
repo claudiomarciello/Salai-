@@ -42,8 +42,6 @@
 
 /* Begin PBXFileReference section */
 		6004E35D2B83A94C00BEB7CD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		6004E3622B83B7F800BEB7CD /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
-		6004E3632B83B7F800BEB7CD /* AiResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResultsView.swift; sourceTree = "<group>"; };
 		6004E3782B83B84D00BEB7CD /* AiResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResults.swift; sourceTree = "<group>"; };
 		6004E3792B83B84D00BEB7CD /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		6004E3822B83B99700BEB7CD /* AiResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResultsViewModel.swift; sourceTree = "<group>"; };
@@ -88,16 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6004E3612B83B7F800BEB7CD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6004E3622B83B7F800BEB7CD /* PortfolioView.swift */,
-				6004E3632B83B7F800BEB7CD /* AiResultsView.swift */,
-			);
-			name = Views;
-			path = ../../../Downloads/salai/salai/Views;
-			sourceTree = "<group>";
-		};
 		6004E3772B83B84D00BEB7CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +142,6 @@
 			children = (
 				6051F0262B8396C2005DA335 /* Salai_App.swift */,
 				6051F0282B8396C2005DA335 /* ContentView.swift */,
-				6004E3612B83B7F800BEB7CD /* Views */,
 				6051F02A2B8396C5005DA335 /* Assets.xcassets */,
 				6051F02F2B8396C5005DA335 /* Salai_.entitlements */,
 				6051F02C2B8396C5005DA335 /* Preview Content */,
@@ -496,6 +483,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -507,7 +495,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -526,6 +514,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -537,7 +526,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

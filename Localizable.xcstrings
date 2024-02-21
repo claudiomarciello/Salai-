@@ -1,10 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Ai" : {
+
+    },
     "Ai Results" : {
 
     },
+    "Generate a new sketch" : {
+
+    },
     "Picker" : {
+
+    },
+    "portfolio" : {
+
+    },
+    "results" : {
 
     },
     "Select images" : {
@@ -28,7 +40,10 @@
         }
       }
     },
-    "Your portfolio" : {
+    "Upload here your illustrations for train your digital support" : {
+
+    },
+    "Your" : {
 
     }
   },

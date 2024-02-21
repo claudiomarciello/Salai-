@@ -21,10 +21,21 @@ struct PortfolioView: View {
 
     var viewModel = PortfolioViewModel()
     
+    
+    
     var body: some View {
         VStack{
-            Text("Your portfolio")
-                        
+            Text("Your")
+                .font(.system(size: 96))
+                .font(.title)
+                .fontWeight(.bold)
+                .padding(.bottom, -20)
+            Text("portfolio")
+                .font(.system(size: 96))
+                .fontWeight(.bold)
+                .padding(.top, -20)
+                
+                
                         ScrollView(.horizontal) {
                             HStack(spacing: 10) {
                                 ForEach(selectedImages.indices, id: \.self) { index in
@@ -36,13 +47,8 @@ struct PortfolioView: View {
                                 }
                             }
                         }
-                        .padding()
-            
-Spacer()
-                        PhotosPicker("Select images",
-                                     selection: $avatarPhotoItems,
-                                     matching: .images)
-                    }
+            PhotosPicker("Select images", selection: $avatarPhotoItems, matching: .images)
+        }
                     .onChange(of: avatarPhotoItems) { _ in
                         selectedImages.removeAll()
                         Task {
@@ -62,7 +68,7 @@ Spacer()
                                 
                             }})
 
-                }
+    }
             
             
 
