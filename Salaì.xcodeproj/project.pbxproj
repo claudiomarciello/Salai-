@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,11 @@
 		6051F0392B8396C5005DA335 /* Salai_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0382B8396C5005DA335 /* Salai_Tests.swift */; };
 		6051F0432B8396C5005DA335 /* Salai_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0422B8396C5005DA335 /* Salai_UITests.swift */; };
 		6051F0452B8396C5005DA335 /* Salai_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0442B8396C5005DA335 /* Salai_UITestsLaunchTests.swift */; };
+		60684D622B8BA1400038224B /* StableDiffusion in Frameworks */ = {isa = PBXBuildFile; productRef = 60684D612B8BA1400038224B /* StableDiffusion */; };
+		60684D642B8BA4DF0038224B /* WaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60684D632B8BA4DE0038224B /* WaitingView.swift */; };
+		60684D662B8BA67B0038224B /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60684D652B8BA67B0038224B /* ContainerView.swift */; };
+		609F37602B8C8E6700D4D54F /* Sketches in Resources */ = {isa = PBXBuildFile; fileRef = 609F375F2B8C8E6700D4D54F /* Sketches */; };
+		609F376E2B8CE67D00D4D54F /* CanvaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F376D2B8CE67D00D4D54F /* CanvaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,10 @@
 		6051F03E2B8396C5005DA335 /* SalaìUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SalaìUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6051F0422B8396C5005DA335 /* Salai_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salai_UITests.swift; sourceTree = "<group>"; };
 		6051F0442B8396C5005DA335 /* Salai_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salai_UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		60684D632B8BA4DE0038224B /* WaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingView.swift; sourceTree = "<group>"; };
+		60684D652B8BA67B0038224B /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		609F375F2B8C8E6700D4D54F /* Sketches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sketches; sourceTree = "<group>"; };
+		609F376D2B8CE67D00D4D54F /* CanvaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60684D622B8BA1400038224B /* StableDiffusion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +126,9 @@
 		6051F01A2B8396C2005DA335 = {
 			isa = PBXGroup;
 			children = (
+				60684D652B8BA67B0038224B /* ContainerView.swift */,
+				60684D632B8BA4DE0038224B /* WaitingView.swift */,
+				609F376D2B8CE67D00D4D54F /* CanvaView.swift */,
 				600D3FD22B861BD100B3A545 /* Localization.xcstrings */,
 				6004E3812B83B99700BEB7CD /* ViewModel */,
 				6004E3862B83B99D00BEB7CD /* Views */,
@@ -124,6 +137,8 @@
 				6051F0372B8396C5005DA335 /* SalaìTests */,
 				6051F0412B8396C5005DA335 /* SalaìUITests */,
 				6051F0242B8396C2005DA335 /* Products */,
+				60684D602B8BA1400038224B /* Frameworks */,
+				609F375F2B8C8E6700D4D54F /* Sketches */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +189,13 @@
 			path = "SalaìUITests";
 			sourceTree = "<group>";
 		};
+		60684D602B8BA1400038224B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +212,9 @@
 			dependencies = (
 			);
 			name = "Salaì";
+			packageProductDependencies = (
+				60684D612B8BA1400038224B /* StableDiffusion */,
+			);
 			productName = "Salaì";
 			productReference = 6051F0232B8396C2005DA335 /* Salaì.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +288,9 @@
 				it,
 			);
 			mainGroup = 6051F01A2B8396C2005DA335;
+			packageReferences = (
+				60684D5D2B8BA11B0038224B /* XCLocalSwiftPackageReference "../../Downloads/ml-stable-diffusion-main" */,
+			);
 			productRefGroup = 6051F0242B8396C2005DA335 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -282,6 +310,7 @@
 				6051F02E2B8396C5005DA335 /* Preview Assets.xcassets in Resources */,
 				6051F02B2B8396C5005DA335 /* Assets.xcassets in Resources */,
 				600D3FD32B861BD100B3A545 /* Localization.xcstrings in Resources */,
+				609F37602B8C8E6700D4D54F /* Sketches in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,11 +337,14 @@
 			files = (
 				6004E3892B83B99D00BEB7CD /* AiResultsView.swift in Sources */,
 				6004E38A2B83B99D00BEB7CD /* PortfolioView.swift in Sources */,
+				60684D642B8BA4DF0038224B /* WaitingView.swift in Sources */,
 				6004E37A2B83B84D00BEB7CD /* Portfolio.swift in Sources */,
 				6004E37B2B83B84D00BEB7CD /* AiResults.swift in Sources */,
 				6004E3842B83B99700BEB7CD /* AiResultsViewModel.swift in Sources */,
 				6051F0292B8396C2005DA335 /* ContentView.swift in Sources */,
+				609F376E2B8CE67D00D4D54F /* CanvaView.swift in Sources */,
 				6004E3852B83B99700BEB7CD /* PortfolioViewModel.swift in Sources */,
+				60684D662B8BA67B0038224B /* ContainerView.swift in Sources */,
 				6051F0272B8396C2005DA335 /* Salai_App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Salaì/Salai_.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -483,14 +516,16 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.claudiomarciello.Salai-";
+				PRODUCT_BUNDLE_IDENTIFIER = claudiomarciello.SalAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -505,6 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Salaì/Salai_.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -514,14 +550,16 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.claudiomarciello.Salai-";
+				PRODUCT_BUNDLE_IDENTIFIER = claudiomarciello.SalAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -642,6 +680,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		60684D5D2B8BA11B0038224B /* XCLocalSwiftPackageReference "../../Downloads/ml-stable-diffusion-main" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../Downloads/ml-stable-diffusion-main";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60684D612B8BA1400038224B /* StableDiffusion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60684D5D2B8BA11B0038224B /* XCLocalSwiftPackageReference "../../Downloads/ml-stable-diffusion-main" */;
+			productName = StableDiffusion;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6051F01B2B8396C2005DA335 /* Project object */;
 }

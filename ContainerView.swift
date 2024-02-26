@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import StableDiffusion
 
 struct ContainerView: View {
+    @State var generating = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if generating{
+            WaitingView(generating: $generating)}
+        else{
+            ContentView(generating: $generating)
+        }
     }
 }
 

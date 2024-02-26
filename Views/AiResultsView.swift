@@ -7,9 +7,12 @@
 
 import SwiftUI
 import PhotosUI
+import StableDiffusion
 
 struct AiResultsView: View {
-    
+    @Binding var generating: Bool
+    @Binding var isOverlayVisible: Bool
+
     @Binding var selected: Int
     enum SwipeHorizontalDirection: String {
         case left, none
@@ -24,18 +27,20 @@ struct AiResultsView: View {
                 .foregroundStyle(.gray)
             VStack{
                 Text("Ai")
-                    .font(.system(size: 96))
+                    .font(.system(size: 192))
                     .font(.title)
                     .fontWeight(.bold)
-                    .padding(.bottom, -20)
+                    .padding(.bottom, -40)
                 Text("results")
-                    .font(.system(size: 96))
+                    .font(.system(size: 192))
                     .fontWeight(.bold)
-                    .padding(.top, -20)
-                Text("Upload here your illustrations for train your digital support")
-                    .font(.title3)
+                    .padding(.top, -40)
+                
                 // .fontWeight(.thin)
-                Button(action: {print("button")}){
+                Button(action: {
+                    //generating=true
+                    isOverlayVisible=true})
+                {
                     HStack{
                         Image(systemName: "wand.and.stars")
                             .resizable()
@@ -69,5 +74,5 @@ struct AiResultsView: View {
 
 
 #Preview {
-    AiResultsView(selected: .constant(0))
+    AiResultsView(generating: .constant(false), isOverlayVisible: .constant(false), selected: .constant(0))
 }
