@@ -73,9 +73,10 @@ struct PortfolioView: View {
                             .fontWeight(.regular)
                             .foregroundStyle(.black)
                             .frame(width: 100, height: 50)
-                            
+                        
                     }
-                }}
+                }
+            }
             .onChange(of: avatarPhotoItems) { _ in
                 selectedImages.removeAll()
                 Task {

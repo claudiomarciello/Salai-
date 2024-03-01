@@ -13,6 +13,7 @@
 		6004E3852B83B99700BEB7CD /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3832B83B99700BEB7CD /* PortfolioViewModel.swift */; };
 		6004E3892B83B99D00BEB7CD /* AiResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3882B83B99D00BEB7CD /* AiResultsView.swift */; };
 		6004E38A2B83B99D00BEB7CD /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004E3872B83B99D00BEB7CD /* PortfolioView.swift */; };
+		6006E03A2B90824D00235F63 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6006E0392B90824D00235F63 /* Media.xcassets */; };
 		600D3FD32B861BD100B3A545 /* Localization.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 600D3FD22B861BD100B3A545 /* Localization.xcstrings */; };
 		6051F0272B8396C2005DA335 /* Salai_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0262B8396C2005DA335 /* Salai_App.swift */; };
 		6051F0292B8396C2005DA335 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0282B8396C2005DA335 /* ContentView.swift */; };
@@ -52,6 +53,7 @@
 		6004E3832B83B99700BEB7CD /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 		6004E3872B83B99D00BEB7CD /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		6004E3882B83B99D00BEB7CD /* AiResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiResultsView.swift; sourceTree = "<group>"; };
+		6006E0392B90824D00235F63 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		600D3FD22B861BD100B3A545 /* Localization.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localization.xcstrings; sourceTree = "<group>"; };
 		6051F0232B8396C2005DA335 /* Salaì.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salaì.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6051F0262B8396C2005DA335 /* Salai_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salai_App.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		6051F01A2B8396C2005DA335 = {
 			isa = PBXGroup;
 			children = (
+				6006E0392B90824D00235F63 /* Media.xcassets */,
 				60684D652B8BA67B0038224B /* ContainerView.swift */,
 				60684D632B8BA4DE0038224B /* WaitingView.swift */,
 				609F376D2B8CE67D00D4D54F /* CanvaView.swift */,
@@ -307,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6006E03A2B90824D00235F63 /* Media.xcassets in Resources */,
 				6051F02E2B8396C5005DA335 /* Preview Assets.xcassets in Resources */,
 				6051F02B2B8396C5005DA335 /* Assets.xcassets in Resources */,
 				600D3FD32B861BD100B3A545 /* Localization.xcstrings in Resources */,
@@ -505,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_ENTITLEMENTS = "Salaì/Salai_.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -539,6 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_ENTITLEMENTS = "Salaì/Salai_.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

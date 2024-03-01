@@ -12,6 +12,8 @@ import StableDiffusion
 struct AiResultsView: View {
     @Binding var generating: Bool
     @Binding var isOverlayVisible: Bool
+    @State var showResults: Bool = false
+    @State  var results: [Image] = []
 
     @Binding var selected: Int
     enum SwipeHorizontalDirection: String {
@@ -57,6 +59,17 @@ struct AiResultsView: View {
                     .background(.black)
                     .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
                 }
+                Button(action: {showResults=true}){
+                    ZStack{
+                        Rectangle().foregroundStyle(.gray)
+                            .frame(width: 200, height: 50)
+                        Text("Results")
+                            .fontWeight(.regular)
+                            .foregroundStyle(.black)
+                            .frame(width: 100, height: 50)
+                        
+                    }
+                }
                 
                 
                 
@@ -69,10 +82,91 @@ struct AiResultsView: View {
                         selected=1
                         
                     }})
+            .overlay(
+                Group {
+                    if showResults {
+                        ZStack{
+                            Rectangle()
+                                .opacity(0.2)
+                                .frame(width: 1200, height: 1200)
+                                .foregroundStyle(.black)
+                                .ignoresSafeArea().onTapGesture {
+                                    showResults = false
+                                    }
+                            
+                            
+                            
+                            
+                            
+                            RoundedRectangle(cornerRadius: 12.0).foregroundColor(.white)
+                                .frame(width: 500, height: 600, alignment: .center)
+                            
+                            
+                            
+                            
+                            
+                            VStack {
+                                
+                                    Text("Results")
+                                        .fontWeight(.heavy)
+                                        .bold()
+                                        .frame(width: 500)
+                                
+                                if results.count>0{
+                                    ScrollView {
+                                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 5) {
+                                            ForEach(results.indices, id: \.self) { index in
+                                                results[index]
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 100, height: 100)
+                                                    .cornerRadius(8)
+                                                    
+                                            }
+                                        }
+                                        
+                                    }.frame(width: 500, height: 500, alignment: .center)
+                                    
+                                        .padding()
+                                    
+                                }else{
+                                    Spacer()
+                                    Text("No images uploaded in Your Portfolio")
+                                        .font(.headline)
+                                        .foregroundStyle(.gray)
+                                    Spacer()
+                                    HStack{
+                                        Text("Cancel")
+                                        Spacer()
+                                            .foregroundStyle(.blue)
+                                        Text("Select your reference")
+                                            .fontWeight(.heavy)
+                                            .bold()
+                                        Spacer()
+                                        Text("Done")
+                                        .foregroundStyle(.blue)
+                                        .bold()
+                                        
+                                    }.frame(width: 500)
+                                        .opacity(0)
+                                }
+                                
+                                
+                                
+                                
+                            }
+                        }
+                    }}
+                
+                
+            ).frame(height: 650)
+                
+            }
     }
-}
+    
+
 
 
 #Preview {
-    AiResultsView(generating: .constant(false), isOverlayVisible: .constant(false), selected: .constant(0))
+    AiResultsView(generating: .constant(false), isOverlayVisible: .constant(false), results: [], selected: .constant(0))
 }

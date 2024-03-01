@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StableDiffusion
+import UIKit
 
 struct WaitingView: View {
     @State var preprompt: String = "sketch art, line art drawing, line art, black line art, black line, black color, black lines, a line drawing, sketch drawing"
@@ -29,7 +30,8 @@ struct WaitingView: View {
             NavigationLink(destination: CanvaView()){
                 Image("Star")
                     .rotationEffect(.degrees(rotationAngle), anchor: .center)
-                .onAppear { startRotation() }}
+                    .onAppear { startRotation()
+                        }}
                 
             
             Text("AI is generating your sketch...")

@@ -7,10 +7,10 @@
 import PencilKit
 import UIKit
 
-class Peppe: UIViewController {
+public class Peppe: UIViewController {
 
     // il nostro canvas
-    private let CanvasView: PKCanvasView = {
+    let CanvasView: PKCanvasView = {
         let canvas = PKCanvasView()
         
         //per usare le dita come input
@@ -19,19 +19,19 @@ class Peppe: UIViewController {
     }()
     
     let drawing = PKDrawing()
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         CanvasView.drawing = drawing // per renderizzare l'immagine
          view.addSubview(CanvasView)
    }
     
     //sovrapponiamo i frame
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         CanvasView.frame = view.bounds
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //per i tool

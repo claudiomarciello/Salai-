@@ -140,6 +140,27 @@ struct ContentView: View {
                                 Text("No images uploaded in Your Portfolio")
                                     .font(.headline)
                                     .foregroundStyle(.gray)
+                                
+                                Button(action: {
+                                    generating=true
+})
+                                {
+                                    HStack{
+                                        Image(systemName: "wand.and.stars")
+                                            .resizable()
+                                            .foregroundStyle(.white)
+                                            .frame(width: 30, height: 30)
+                                            .padding(.leading)
+                                        Text("Proceed anyway")
+                                            .font(.body)
+                                            .fontWeight(.regular)
+                                            .foregroundStyle(.white)
+                                            .padding()
+                                    }
+                                    .frame(width: 250)
+                                    .background(.black)
+                                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                                }
                                 Spacer()
                                 HStack{
                                     Text("Cancel")
