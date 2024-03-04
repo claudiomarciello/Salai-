@@ -10,12 +10,14 @@ import PhotosUI
 import StableDiffusion
 
 struct AiResultsView: View {
-    @Binding var generating: Bool
+   // @Binding var generating: Bool
     @Binding var isOverlayVisible: Bool
     @State var showResults: Bool = false
     @State  var results: [Image] = []
-
+    @Binding var areImagesLoaded: Bool
+    @State var shouldAutorun = false
     @Binding var selected: Int
+    @State var prompt: String = ""
     enum SwipeHorizontalDirection: String {
         case left, none
     }
@@ -38,27 +40,45 @@ struct AiResultsView: View {
                     .fontWeight(.bold)
                     .padding(.top, -40)
                 
-                // .fontWeight(.thin)
-                Button(action: {
-                    //generating=true
-                    isOverlayVisible=true})
-                {
-                    HStack{
-                        Image(systemName: "wand.and.stars")
-                            .resizable()
-                            .foregroundStyle(.white)
-                            .frame(width: 30, height: 30)
-                            .padding(.leading)
-                        Text("Generate a new sketch")
-                            .font(.body)
-                            .fontWeight(.regular)
-                            .foregroundStyle(.white)
-                            .padding()
-                    }
-                    .frame(width: 250)
-                    .background(.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                }
+                
+                if areImagesLoaded==false {
+                    NavigationLink(destination: WaitingView(prompt: $prompt, finalimage: UIImage(), shouldAutorun: $shouldAutorun), label:{
+                        HStack{
+                            Image(systemName: "wand.and.stars")
+                                .resizable()
+                                .foregroundStyle(.white)
+                                .frame(width: 30, height: 30)
+                                .padding(.leading)
+                            Text("Generate a new sketch")
+                                .font(.body)
+                                .fontWeight(.regular)
+                                .foregroundStyle(.white)
+                                .padding()
+                        }
+                        .frame(width: 250)
+                        .background(.black)
+                        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    })
+                } else {
+                    Button(action: {
+                            isOverlayVisible=true})
+                    {
+                        HStack{
+                            Image(systemName: "wand.and.stars")
+                                .resizable()
+                                .foregroundStyle(.white)
+                                .frame(width: 30, height: 30)
+                                .padding(.leading)
+                            Text("Generate a new sketch")
+                                .font(.body)
+                                .fontWeight(.regular)
+                                .foregroundStyle(.white)
+                                .padding()
+                        }
+                        .frame(width: 250)
+                        .background(.black)
+                        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    }}
                 Button(action: {showResults=true}){
                     ZStack{
                         Rectangle().foregroundStyle(.gray)
@@ -168,5 +188,5 @@ struct AiResultsView: View {
 
 
 #Preview {
-    AiResultsView(generating: .constant(false), isOverlayVisible: .constant(false), results: [], selected: .constant(0))
+    AiResultsView(isOverlayVisible: .constant(false), results: [], areImagesLoaded: .constant(false), selected: .constant(0))
 }

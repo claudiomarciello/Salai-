@@ -27,6 +27,7 @@
 		60684D662B8BA67B0038224B /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60684D652B8BA67B0038224B /* ContainerView.swift */; };
 		609F37602B8C8E6700D4D54F /* Sketches in Resources */ = {isa = PBXBuildFile; fileRef = 609F375F2B8C8E6700D4D54F /* Sketches */; };
 		609F376E2B8CE67D00D4D54F /* CanvaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F376D2B8CE67D00D4D54F /* CanvaView.swift */; };
+		60EA47BA2B949893003C7134 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EA47B92B949893003C7134 /* PromptView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		60684D652B8BA67B0038224B /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		609F375F2B8C8E6700D4D54F /* Sketches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sketches; sourceTree = "<group>"; };
 		609F376D2B8CE67D00D4D54F /* CanvaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvaView.swift; sourceTree = "<group>"; };
+		60EA47B82B93AB23003C7134 /* Salai--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Salai--Info.plist"; sourceTree = SOURCE_ROOT; };
+		60EA47B92B949893003C7134 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 		6051F01A2B8396C2005DA335 = {
 			isa = PBXGroup;
 			children = (
+				60EA47B92B949893003C7134 /* PromptView.swift */,
 				6006E0392B90824D00235F63 /* Media.xcassets */,
 				60684D652B8BA67B0038224B /* ContainerView.swift */,
 				60684D632B8BA4DE0038224B /* WaitingView.swift */,
@@ -158,6 +162,7 @@
 		6051F0252B8396C2005DA335 /* Salaì */ = {
 			isa = PBXGroup;
 			children = (
+				60EA47B82B93AB23003C7134 /* Salai--Info.plist */,
 				6051F0262B8396C2005DA335 /* Salai_App.swift */,
 				6051F0282B8396C2005DA335 /* ContentView.swift */,
 				6051F02A2B8396C5005DA335 /* Assets.xcassets */,
@@ -343,6 +348,7 @@
 				6004E38A2B83B99D00BEB7CD /* PortfolioView.swift in Sources */,
 				60684D642B8BA4DF0038224B /* WaitingView.swift in Sources */,
 				6004E37A2B83B84D00BEB7CD /* Portfolio.swift in Sources */,
+				60EA47BA2B949893003C7134 /* PromptView.swift in Sources */,
 				6004E37B2B83B84D00BEB7CD /* AiResults.swift in Sources */,
 				6004E3842B83B99700BEB7CD /* AiResultsViewModel.swift in Sources */,
 				6051F0292B8396C2005DA335 /* ContentView.swift in Sources */,
@@ -520,6 +526,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Salai--Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -555,6 +562,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Salai--Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;

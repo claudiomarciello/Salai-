@@ -10,13 +10,10 @@ import StableDiffusion
 
 
 struct ContainerView: View {
-    @State var generating = false
     var body: some View {
-        if generating{
-            WaitingView(generating: $generating)}
-        else{
-            ContentView(generating: $generating)
-        }
+
+            ContentView()
+        
     }
 }
 

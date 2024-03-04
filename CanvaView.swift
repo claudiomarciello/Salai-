@@ -3,6 +3,24 @@ import PencilKit
 import UIKit
 import SwiftData
 
+struct ShareButton: View {
+    var shareItems: [Any]
+    var body: some View {
+        Button {
+            
+            let activityController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+            let allScenes = UIApplication.shared.connectedScenes
+            let scene = allScenes.first { $0.activationState == .foregroundActive }
+            if let windowScene = scene as? UIWindowScene {
+                activityController.popoverPresentationController?.sourceView = windowScene.keyWindow
+                activityController.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width*0.99, y: 0, width: 1, height: 1)
+                windowScene.keyWindow?.rootViewController?.present(activityController, animated: true, completion: nil)
+            }
+        } label: {
+            Image(systemName: "square.and.arrow.up")
+        }
+    }
+}
 
 struct CanvaView: View {
 
@@ -11,33 +29,106 @@ struct CanvaView: View {
     @State private var color: Color = .black
     @State private var pencilType: PKInkingTool.InkType = .pencil
     @State private var colorPicker = false
+    @State var sketch: UIImage
+    @State private var isSaved = false
+    @State private var selectedTool: PKInkingTool?
+    @State var toShare: [UIImage] = []
+    @Binding var prompt: String
+    @Binding var shouldAutorun: Bool
+    @Environment(\.presentationMode) var presentationMode
+
+    @State private var canvasView: PKCanvasView = {
+        let view = PKCanvasView()
+        view.drawingPolicy = .anyInput
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     var body: some View {
-        VStack {
-            ZStack{
-                Image("PresetStyle1")
-                    .overlay(
-                        DrawingView(canvas: $canvas, isDrawing: $isDrawing, pencilType: pencilType, color: color).opacity(0.7)
-)
+        NavigationStack{
+            VStack {
+                HStack{
+                    Button(action: {self.presentationMode.wrappedValue.dismiss()}, label: {
+                        ZStack {
+                            RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
+                                .foregroundColor(.black)
+                                .frame(width: 100, height: 50)
+                            
+                            Image(systemName: "arrow.backward")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                                .frame(width: 30, height: 30)
+                            
+                        }
+                        Spacer()
+                    })
+                    NavigationLink(destination: WaitingView(prompt: $prompt, shouldAutorun: .constant(true)), label:{
+                        ZStack {
+                            Circle()
+                                .foregroundColor(.black)
+                                .frame(width: 50, height: 50)
+                            
+                            Image(systemName: "arrow.clockwise")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                                .frame(width: 30, height: 30)
+                        }})
+                    Spacer()
+                    Button {
+                        toShare.removeAll()
+                        self.saveDrawingAsPNG(sketch: sketch)
+                        let activityController = UIActivityViewController(activityItems: toShare, applicationActivities: nil)
+                        let allScenes = UIApplication.shared.connectedScenes
+                        let scene = allScenes.first { $0.activationState == .foregroundActive }
+                        if let windowScene = scene as? UIWindowScene {
+                            activityController.popoverPresentationController?.sourceView = windowScene.keyWindow
+                            activityController.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width*0.99, y: 0, width: 1, height: 1)
+                            windowScene.keyWindow?.rootViewController?.present(activityController, animated: true, completion: nil)
+                        }
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .foregroundColor(.black)
+                                .frame(width: 50, height: 50)
+                            
+                            Image(systemName: "square.and.arrow.up")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                                .frame(width: 30, height: 30)
+                        }
+                    }
+                }.padding(10)
+                ZStack{
+                    Image(uiImage: sketch).resizable()
+                    
+                        .overlay(
+                            CanvasRepresentable(canvasView: $canvasView, selectedTool: $selectedTool).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                                .edgesIgnoringSafeArea(.all)
+                            
+                            //   .border(Color.gray) // Optional: add a border
+                                .onAppear {
+                                    canvasView.tool = selectedTool ?? PKInkingTool(.pen, color: .black, width: 15)
+                                    canvasView.becomeFirstResponder()
+                                }).opacity(0.7)
+                    
+                    
+                    
+                    
+                }.scaledToFit()
+                    .padding(.vertical, 10)
                 
-                
-            }
-            Button("Save Drawing") {
-                self.saveDrawing() // Call saveDrawing from CanvaView
-            }
-            Button("Load Drawing") {
-                self.loadDrawing() // Call loadDrawing from CanvaView
-            }
-            Button("Png"){
-                self.saveDrawingAsPNG()
+
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 
-    // Move saveDrawing and loadDrawing methods here
     func saveDrawing() {
         // Get the drawing from the canvas
-        let drawing = canvas.drawing
+        let drawing = canvasView.drawing
         
         // Convert the PKDrawing to Data
         do {
@@ -69,7 +160,7 @@ struct CanvaView: View {
             let drawing = try PKDrawing(data: data)
             
             // Set the drawing to the canvas
-            canvas.drawing = drawing
+            canvasView.drawing = drawing
         } catch {
             print("Error loading drawing: \(error)")
         }
@@ -81,11 +172,11 @@ struct CanvaView: View {
             print("Failed to convert image to PNG data")
             return
         }
-
+        
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsURL.appendingPathComponent(filename)
-
+        
         do {
             try pngData.write(to: fileURL)
             print("\(filename) saved at: \(fileURL)")
@@ -94,46 +185,111 @@ struct CanvaView: View {
         }
     }
     
-    func saveDrawingAsPNG() {
-        // Get the drawing from the canvas
-        let drawing = canvas.drawing
+    func saveDrawingAsPNG(sketch: UIImage) {
         
-        // Create a UIImage from the drawing
-        let drawingImage = drawing.image(from: CGRect(origin: .zero, size: CGSize(width: 1024, height: 1024)), scale: 1)
-        saveImageAsPNG(image: drawingImage, filename: "image1")
-        // Load the background image
-        guard let backgroundImage = UIImage(named: "PresetStyle1") else {
-            print("Error: Failed to load background image.")
-            return
-        }
-        saveImageAsPNG(image: backgroundImage, filename: "image2")
+        /*
+         let backgroundImage = sketch
+         let drawing = canvasView.drawing
+         
+         // Get the size of the canvas
+         let canvasSize = canvasView.bounds.size
+         
+         // Calculate the scale factor for the drawing
+         let scaleFactor = max(sketch.size.width / canvasSize.width, sketch.size.height / canvasSize.height)
+         
+         // Calculate the size of the drawing in the canvas coordinate system
+         let drawingSize = CGSize(width: drawing.bounds.width / scaleFactor, height: drawing.bounds.height / scaleFactor)
+         
+         // Calculate the position of the drawing in the canvas coordinate system
+         let drawingOrigin = CGPoint(x: (canvasSize.width - drawingSize.width) / 2, y: (canvasSize.height - drawingSize.height) / 2)
+         
+         // Create a drawing context with the canvas size
+         UIGraphicsBeginImageContextWithOptions(canvasSize, false, 0.0)
+         
+         // Draw the background image
+         backgroundImage.draw(in: CGRect(origin: .zero, size: canvasSize))
+         
+         // Draw the drawing image centered on the canvas
+         drawing.image(from: CGRect(origin: drawingOrigin, size: drawingSize), scale: 1.0).draw(at: drawingOrigin)
+         
+         // Get the merged image from the context
+         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()
+         
+         // End the context
+         UIGraphicsEndImageContext()
+         
+         if let mergedImage = mergedImage {
+         toShare.append(mergedImage)
+         }
+         
+         toShare.append(backgroundImage)
+         toShare.append(drawing.image(from: drawing.bounds, scale: 1.0))
+         // Convert the UIImage to PNG data
+         guard let pngData = mergedImage?.pngData() else {
+         print("Failed to convert image to PNG data")
+         return
+         }
+         
+         // Save the PNG data to a file
+         let fileManager = FileManager.default
+         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+         let fileURL = documentsURL.appendingPathComponent("drawing.png")
+         
+         do {
+         try pngData.write(to: fileURL)
+         print("Drawing saved as PNG at: \(fileURL)")
+         } catch {
+         print("Error saving drawing as PNG: \(error)")
+         }}
+         */
         
-        // Calculate the size of the resulting image
-        let width = backgroundImage.size.width
-        let height = backgroundImage.size.height
-        let size = CGSize(width: width, height: height)
         
-        // Create a drawing context with the calculated size
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        
+        
+        
+        let backgroundImage = sketch
+        let drawing = canvasView.drawing
+        
+        // Get the size of the canvas
+        let canvasSize = canvasView.bounds.size
+        
+        // Calculate the scale factor for the drawing
+        let scaleFactor = min(canvasSize.width / sketch.size.width, canvasSize.height / sketch.size.height)
+        
+        // Calculate the size of the drawing in the canvas coordinate system
+        let drawingSize = CGSize(width: sketch.size.width * scaleFactor, height: sketch.size.height * scaleFactor)
+        
+        // Calculate the position of the drawing in the canvas coordinate system
+        let drawingOrigin = CGPoint(x: (canvasSize.width - drawingSize.width) / 2, y: (canvasSize.height - drawingSize.height) / 2)
+        
+        // Create a drawing context with the canvas size
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, 0.0)
         
         // Draw the background image
-        backgroundImage.draw(in: CGRect(origin: .zero, size: size))
+        backgroundImage.draw(in: CGRect(origin: .zero, size: canvasSize))
         
-        // Calculate the offset to center the drawing image
-        let xOffset = (width - drawingImage.size.width) / 2
-        let yOffset = (height - drawingImage.size.height) / 2
-        
-        // Draw the drawing image centered on the background image
-        drawingImage.draw(in: CGRect(x: 0, y: 0, width: 1024, height: 1024))
+        // Draw the drawing image centered on the canvas
+        drawing.image(from: CGRect(origin: drawingOrigin, size: drawingSize), scale: 1.0).draw(at: drawingOrigin)
         
         // Get the merged image from the context
         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()
         
         // End the context
         UIGraphicsEndImageContext()
+        if let mergedImage = mergedImage {
+        toShare.append(mergedImage)
+        }
+        
+        toShare.append(backgroundImage)
+        toShare.append(drawing.image(from: drawing.bounds, scale: 1.0))
+        
+        guard let mergedImage = mergedImage else {
+            print("Failed to create merged image")
+            return
+        }
         
         // Convert the UIImage to PNG data
-        guard let pngData = mergedImage?.pngData() else {
+        guard let pngData = mergedImage.pngData() else {
             print("Failed to convert image to PNG data")
             return
         }
@@ -148,45 +304,43 @@ struct CanvaView: View {
             print("Drawing saved as PNG at: \(fileURL)")
         } catch {
             print("Error saving drawing as PNG: \(error)")
-        }
-        
-        
-    }
+        }}
     
-
-    
-    func mergeImages(image1: UIImage, image2: UIImage) -> UIImage? {
-        // Get the size of the resulting image
-        let size = CGSize(width: image1.size.width,
-                         height: image2.size.height)
-
-        
-        // Create a drawing context
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        
-        // Draw the first image
-        image1.draw(in: CGRect(x: 0, y: 0, width: 512, height: 512))
-        saveImageAsPNG(image: image1, filename: "image1.png")
-
-        // Draw the second image on top of the first
-        image2.draw(in: CGRect(x: 0, y: 0, width: 512, height: 512))
-        saveImageAsPNG(image: image2, filename: "image2.png")
-
-        
-        // Get the merged image from the context
-        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        // End the context
-        UIGraphicsEndImageContext()
-        
-        return mergedImage
-    }
-
 }
 
-struct CanvaView_Previews: PreviewProvider {
-    static var previews: some View {
-        CanvaView()
+struct CanvasRepresentable: UIViewRepresentable {
+    @Binding var canvasView: PKCanvasView
+    @Binding var selectedTool: PKInkingTool?
+    
+    let toolPicker = PKToolPicker()
+    
+    func makeUIView(context: Context) -> PKCanvasView {
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        toolPicker.addObserver(canvasView)
+        canvasView.delegate = context.coordinator
+        return canvasView
+    }
+    
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        if let tool = selectedTool {
+            uiView.tool = tool
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, PKCanvasViewDelegate {
+        var parent: CanvasRepresentable
+        
+        init(_ parent: CanvasRepresentable) {
+            self.parent = parent
+        }
+        
+        func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+            // Optional: Handle drawing changes
+        }
     }
 }
 
@@ -222,4 +376,7 @@ struct DrawingView: UIViewRepresentable {
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         uiView.tool = isDrawing ? ink : eraser
     } // updateUIView
+    
+    
+
 }

@@ -26,6 +26,7 @@ extension Image {
 
 struct PortfolioView: View {
     @Binding var selected: Int
+    @Binding var areImagesLoaded: Bool
     enum SwipeHorizontalDirection: String {
         case right, none
     }
@@ -109,6 +110,13 @@ struct PortfolioView: View {
                             print("Error creating directory: \(error)")
                         }
                     }
+                if selectedImages.count > 0{
+                    areImagesLoaded = true
+                }
+                else{
+                areImagesLoaded=false}
+                
+                
             }}
         .gesture(DragGesture()
             .onChanged {
@@ -209,5 +217,5 @@ struct PortfolioView: View {
 
 
 #Preview {
-    PortfolioView(selected: .constant(1), selectedImages: .constant([]))
+    PortfolioView(selected: .constant(1), areImagesLoaded: .constant(false), selectedImages: .constant([]))
 }
