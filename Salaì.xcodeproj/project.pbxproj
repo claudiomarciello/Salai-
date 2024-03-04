@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,7 +22,6 @@
 		6051F0392B8396C5005DA335 /* Salai_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0382B8396C5005DA335 /* Salai_Tests.swift */; };
 		6051F0432B8396C5005DA335 /* Salai_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0422B8396C5005DA335 /* Salai_UITests.swift */; };
 		6051F0452B8396C5005DA335 /* Salai_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051F0442B8396C5005DA335 /* Salai_UITestsLaunchTests.swift */; };
-		60684D622B8BA1400038224B /* StableDiffusion in Frameworks */ = {isa = PBXBuildFile; productRef = 60684D612B8BA1400038224B /* StableDiffusion */; };
 		60684D642B8BA4DF0038224B /* WaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60684D632B8BA4DE0038224B /* WaitingView.swift */; };
 		60684D662B8BA67B0038224B /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60684D652B8BA67B0038224B /* ContainerView.swift */; };
 		609F37602B8C8E6700D4D54F /* Sketches in Resources */ = {isa = PBXBuildFile; fileRef = 609F375F2B8C8E6700D4D54F /* Sketches */; };
@@ -80,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60684D622B8BA1400038224B /* StableDiffusion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +219,6 @@
 			);
 			name = "Salaì";
 			packageProductDependencies = (
-				60684D612B8BA1400038224B /* StableDiffusion */,
 			);
 			productName = "Salaì";
 			productReference = 6051F0232B8396C2005DA335 /* Salaì.app */;
@@ -297,7 +294,6 @@
 			);
 			mainGroup = 6051F01A2B8396C2005DA335;
 			packageReferences = (
-				60684D5D2B8BA11B0038224B /* XCLocalSwiftPackageReference "../../Downloads/ml-stable-diffusion-main" */,
 			);
 			productRefGroup = 6051F0242B8396C2005DA335 /* Products */;
 			projectDirPath = "";
@@ -694,21 +690,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		60684D5D2B8BA11B0038224B /* XCLocalSwiftPackageReference "../../Downloads/ml-stable-diffusion-main" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Downloads/ml-stable-diffusion-main";
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		60684D612B8BA1400038224B /* StableDiffusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 60684D5D2B8BA11B0038224B /* XCLocalSwiftPackageReference "../../Downloads/ml-stable-diffusion-main" */;
-			productName = StableDiffusion;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6051F01B2B8396C2005DA335 /* Project object */;
 }

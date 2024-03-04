@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
-import StableDiffusion
 import UIKit
 
 struct WaitingView: View {
     @State var preprompt: String = "sketch art, line art drawing, line art, black line art, black line, black color, black lines, a line drawing, sketch drawing"
     
     @Binding var prompt: String
-    @State var pipeline: StableDiffusionPipeline?
     
     @State var progress = 0.0
     @State var generating: Bool = false

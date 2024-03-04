@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import StableDiffusion
 
 
 struct ContainerView: View {

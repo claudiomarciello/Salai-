@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PhotosUI
-import StableDiffusion
 
 struct AiResultsView: View {
    // @Binding var generating: Bool
